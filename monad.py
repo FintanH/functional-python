@@ -6,14 +6,16 @@ class Monad:
     def __init__(self):
         pass
 
-    def ret(self, a):
+    @staticmethod
+    def ret(a):
         """ a -> m a
         :param a:
         :return:
         """
         pass
 
-    def bind(self, f, a):
+    @staticmethod
+    def bind(f, a):
         """ (a -> m b) -> m a -> m b
         :param f:
         :param a:
@@ -21,8 +23,9 @@ class Monad:
         """
         pass
 
-    def fail(self):
-        """ m a
+    @staticmethod
+    def fail(string):
+        """ String -> m a
         :return:
         """
         pass

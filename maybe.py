@@ -4,22 +4,22 @@ from monad import Monad
 
 class Maybe(Monad):
 
-    def __init__(self):
-        pass
-
-    def ret(self, a):
+    @staticmethod
+    def ret(a):
         return Just(a)
 
-    def bind(self, f):
+    @staticmethod
+    def bind(f, m):
 
-        if is_nothing(self):
-            return self
+        if is_nothing(m):
+            return m
         else:
-            a = self.get_value()
+            a = m.get_value()
             b = f(a)
             return Just(b)
 
-    def fail(self):
+    @staticmethod
+    def fail(_=None):
         return Nothing()
 
     @staticmethod
@@ -124,6 +124,9 @@ class Nothing(Maybe):
         return "Nothing"
 
 """Expose functions for importing"""
+ret = Maybe.ret
+bind = Maybe.bind
+fail = Maybe.fail
 maybe = Maybe.maybe
 is_just = Maybe.is_just
 is_nothing = Maybe.is_nothing
