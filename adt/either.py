@@ -1,16 +1,18 @@
 __author__ = 'halpenny'
-from monad import Monad
+from monad.monad import Monad
+from functor.functor import Functor
 
 
 class Either(Monad):
 
     def __irshift__(self, other):
-        """ Acts as a single bind which can ease syntax in places
+        """ Acts as a single bind which can ease syntax in places.
+        The reason it can only be used once is because Python thinks you're assigning.
         Cannot use it like:
-            a >>= f >>= g
+            m a >>= f >>= g
         but rather accumulate:
-            a >>= f
-            a >>= g
+            m a >>= f
+            m a >>= g
         :param other: a -> m b
         :return: m b
         """

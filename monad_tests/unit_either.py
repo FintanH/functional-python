@@ -2,7 +2,7 @@ __author__ = 'fintan'
 
 import unittest
 
-from monad.either import Right, Left, ret, bind
+from adt.either import Right, Left, ret, bind
 
 
 ############

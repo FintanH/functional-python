@@ -1,7 +1,7 @@
 __author__ = 'fintan'
 import unittest
 
-from monad.maybe import Just, Nothing, bind, ret
+from adt.maybe import Just, Nothing, bind, ret
 
 
 ############

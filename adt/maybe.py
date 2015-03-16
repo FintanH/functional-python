@@ -1,8 +1,9 @@
 __author__ = 'halpenny'
-from monad import Monad
+from monad.monad import Monad
+from functor.functor import Functor
 
 
-class Maybe(Monad):
+class Maybe(Monad, Functor):
 
     def __irshift__(self, other):
         """ Acts as a single bind which can ease syntax in places
@@ -40,6 +41,14 @@ class Maybe(Monad):
     @staticmethod
     def fail(_=None):
         return Nothing()
+
+    @staticmethod
+    def fmap(f, fa):
+        if isinstance(fa, Nothing):
+            return fa
+        a = fa.get_value()
+        b = f(a)
+        return ret(b)
 
     @staticmethod
     def maybe(b, f, m):
@@ -156,6 +165,7 @@ do = Maybe.do
 ret = Maybe.ret
 bind = Maybe.bind
 fail = Maybe.fail
+fmap = Maybe.fmap
 maybe = Maybe.maybe
 is_just = Maybe.is_just
 is_nothing = Maybe.is_nothing
