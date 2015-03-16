@@ -68,6 +68,15 @@ class Right(Either):
     def __init__(self, a):
         self.__value = a
 
+    def __eq__(self, other):
+        if isinstance(other, Right):
+            return self.get_value() == other.get_value()
+        else:
+            return False
+
+    def __repr__(self):
+        return "Right" + str(self.get_value())
+
     def get_value(self):
         return self.__value
 
@@ -76,6 +85,15 @@ class Left(Either):
 
     def __init__(self, b):
         self.__value = b
+
+    def __eq__(self, other):
+        if isinstance(other, Left):
+            return self.get_value() == other.get_value()
+        else:
+            return False
+
+    def __repr__(self):
+        return "Left" + str(self.get_value())
 
     def get_value(self):
         return self.__value

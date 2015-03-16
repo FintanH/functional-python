@@ -1,6 +1,7 @@
 __author__ = 'fintan'
+
 import unittest
-from maybe import Just, Nothing, bind, ret
+from either import Right, Left, ret, bind
 
 ############
 # Monad Laws
@@ -20,34 +21,35 @@ class TestLaws(unittest.TestCase):
     """""
 
     def setUp(self):
-        self.a = 1
-        self.f = lambda x: Just(x + 1)
-        self.g = lambda x: Just(x + 2)
+        self.a = "error"
+        self.b = 1
+        self.f = lambda x: Right(x + 1)
+        self.g = lambda x: Right(x + 2)
 
     def test_left_identity(self):
-        # Nothing case does not apply as this law relies on an 'a'
-        # Test Just case
-        self.assertTrue(self.f(self.a) == bind(self.f, ret(self.a)))
+        # Left case does not apply as ret only returns (Right a)
+        #  Test Right case
+        self.assertTrue(self.f(self.b) == bind(self.f, ret(self.b)))
 
     def test_right_identity(self):
-        # Test Just case
-        m = Just(self.a)
+        # Test Right case
+        m = Right(self.b)
         self.assertTrue(self.right_identity(m))
 
-        # Test Nothing case
-        m = Nothing()
+        # Test Left case
+        m = Left(self.a)
         self.assertTrue(self.right_identity(m))
 
     def right_identity(self, m):
         return bind(ret, m) == m
 
     def test_associativity(self):
-        # Test Just case
-        m = Just(self.a)
+        # Test Right case
+        m = Right(self.b)
         self.assertTrue(self.associativity(m))
 
-        # Test Nothing case
-        m = Nothing()
+        # Test Left case
+        m = Left(self.b)
         self.assertTrue(self.associativity(m))
 
     def associativity(self, m):
