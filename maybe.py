@@ -115,6 +115,12 @@ class Just(Maybe):
     def __init__(self, a):
         self.__value = a
 
+    def __eq__(self, other):
+        if isinstance(other, Just):
+            return self.__value == other.__value
+        else:
+            return False
+
     def __repr__(self):
         return "Just " + str(self.__value)
 
