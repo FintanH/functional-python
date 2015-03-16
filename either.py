@@ -5,6 +5,14 @@ from monad import Monad
 class Either(Monad):
 
     @staticmethod
+    def do(value, *args):
+        value = ret(value)
+        for f in args:
+            value = bind(f, value)
+
+        return value
+
+    @staticmethod
     def ret(a):
         return Right(a)
 
@@ -72,6 +80,7 @@ class Left(Either):
     def get_value(self):
         return self.__value
 
+do = Either.do
 ret = Either.ret
 bind = Either.bind
 fail = Either.fail
