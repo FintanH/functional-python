@@ -1,6 +1,8 @@
 __author__ = 'fintan'
 import unittest
-from maybe import Just, Nothing, bind, ret
+
+from monad.maybe import Just, Nothing, bind, ret
+
 
 ############
 # Monad Laws

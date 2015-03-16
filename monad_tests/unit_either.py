@@ -1,7 +1,9 @@
 __author__ = 'fintan'
 
 import unittest
-from either import Right, Left, ret, bind
+
+from monad.either import Right, Left, ret, bind
+
 
 ############
 # Monad Laws

@@ -1,6 +1,6 @@
 __author__ = 'halpenny'
-from maybe import Just, Nothing, Maybe, \
-    do, maybe, is_just, is_nothing, from_just, list_to_maybe, map_maybe, cat_maybes
+from monad.maybe import Just, Nothing, do, is_just, is_nothing, from_just, list_to_maybe, map_maybe, cat_maybes
+from monad import maybe
 
 
 def head(lis):
