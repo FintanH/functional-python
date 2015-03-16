@@ -4,11 +4,23 @@ from monad import Monad
 
 class Maybe(Monad):
 
+    def __irshift__(self, other):
+        """ Acts as a single bind which can ease syntax in places
+        Cannot use it like:
+            a >>= f >>= g
+        but rather accumulate:
+            a >>= f
+            a >>= g
+        :param other: a -> m b
+        :return: m b
+        """
+        return bind(other, self)
+
     @staticmethod
     def do(value, *args):
         value = ret(value)
         for f in args:
-            value = bind(f, value)
+            value >>= f
 
         return value
 

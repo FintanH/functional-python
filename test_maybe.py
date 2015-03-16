@@ -18,8 +18,10 @@ test_list_2 = [1, 2, 3, 4]
 
 print do(test_list_2, head, plus_one)
 
-res = head(test_list).bind(plus_one)
-res_1 = head(test_list_2).bind(plus_one)
+res = head(test_list)
+res >>= plus_one
+res_1 = head(test_list_2)
+res_1 >>= plus_one
 
 print maybe(-1, plus_one, res)
 print maybe(1, plus_one, res_1)
