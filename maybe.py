@@ -5,6 +5,14 @@ from monad import Monad
 class Maybe(Monad):
 
     @staticmethod
+    def do(value, *args):
+        value = ret(value)
+        for f in args:
+            value = bind(f, value)
+
+        return value
+
+    @staticmethod
     def ret(a):
         return Just(a)
 
@@ -15,8 +23,7 @@ class Maybe(Monad):
             return m
         else:
             a = m.get_value()
-            b = f(a)
-            return Just(b)
+            return f(a)
 
     @staticmethod
     def fail(_=None):
@@ -124,6 +131,7 @@ class Nothing(Maybe):
         return "Nothing"
 
 """Expose functions for importing"""
+do = Maybe.do
 ret = Maybe.ret
 bind = Maybe.bind
 fail = Maybe.fail

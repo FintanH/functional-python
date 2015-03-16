@@ -1,6 +1,6 @@
 __author__ = 'halpenny'
 from maybe import Just, Nothing, Maybe, \
-    maybe, is_just, is_nothing, from_just, list_to_maybe, map_maybe, cat_maybes
+    do, maybe, is_just, is_nothing, from_just, list_to_maybe, map_maybe, cat_maybes
 
 
 def head(lis):
@@ -12,11 +12,13 @@ def head(lis):
 
 
 def plus_one(x):
-    return x + 1
+    return Just(x + 1)
 
 
 test_list = []
 test_list_2 = [1, 2, 3, 4]
+
+print do(test_list_2, head, plus_one)
 
 res = head(test_list).bind(plus_one)
 res_1 = head(test_list_2).bind(plus_one)
