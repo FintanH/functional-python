@@ -3,7 +3,7 @@ from typeclasses.monad import Monad
 from typeclasses.functor import Functor
 
 
-class Maybe(Monad, Functor):
+class Maybe(Monad):
 
     def __irshift__(self, other):
         """ Acts as a single bind which can ease syntax in places
@@ -27,7 +27,7 @@ class Maybe(Monad, Functor):
 
     @staticmethod
     def ret(a):
-        return Just(a)
+        return pure(a)
 
     @staticmethod
     def bind(f, m):
@@ -49,6 +49,16 @@ class Maybe(Monad, Functor):
         a = fa.get_value()
         b = f(a)
         return ret(b)
+
+    @staticmethod
+    def pure(a):
+        return Just(a)
+
+    @staticmethod
+    def apply(f, a):
+        func = f.get_value()
+        val = a.get_value()
+        return pure(func(val))
 
     @staticmethod
     def maybe(b, f, m):
@@ -166,6 +176,7 @@ ret = Maybe.ret
 bind = Maybe.bind
 fail = Maybe.fail
 fmap = Maybe.fmap
+pure = Maybe.pure
 maybe = Maybe.maybe
 is_just = Maybe.is_just
 is_nothing = Maybe.is_nothing
