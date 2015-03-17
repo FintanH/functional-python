@@ -1,9 +1,8 @@
 __author__ = 'halpenny'
 from functor import Functor
-from applicative import Applicative
 
 
-class Monad(Functor, Applicative):
+class Monad(Functor):
 
     def __init__(self):
         pass

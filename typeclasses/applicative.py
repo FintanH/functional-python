@@ -1,7 +1,8 @@
 __author__ = 'halpenny'
+from functor import Functor
 
 
-class Applicative:
+class Applicative(Functor):
 
     def __init__(self):
         pass
