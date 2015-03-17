@@ -56,6 +56,8 @@ class Maybe(Monad):
 
     @staticmethod
     def apply(f, a):
+        if isinstance(a, Nothing) or isinstance(f, Nothing):
+            return Nothing()
         func = f.get_value()
         val = a.get_value()
         return pure(func(val))
@@ -177,6 +179,7 @@ bind = Maybe.bind
 fail = Maybe.fail
 fmap = Maybe.fmap
 pure = Maybe.pure
+apply = Maybe.apply
 maybe = Maybe.maybe
 is_just = Maybe.is_just
 is_nothing = Maybe.is_nothing
