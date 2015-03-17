@@ -1,4 +1,5 @@
 __author__ = 'fintan'
+from exceptions.exceptions import NotInstanceOfFunctor
 
 
 class Functor:
@@ -13,4 +14,5 @@ class Functor:
         :param fa:
         :return:
         """
+        raise NotInstanceOfFunctor()
         pass

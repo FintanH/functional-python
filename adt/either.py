@@ -27,7 +27,7 @@ class Either(Monad):
 
     @staticmethod
     def ret(a):
-        return Right(a)
+        return pure(a)
 
     @staticmethod
     def fail(b):
@@ -39,6 +39,27 @@ class Either(Monad):
             return m
         else:
             return f(m.get_value())
+
+    @staticmethod
+    def fmap(f, fa):
+        if isinstance(fa, Right):
+            return Right(f(fa.get_value()))
+        else:
+            return fa
+
+    @staticmethod
+    def pure(a):
+        return Right(a)
+
+    @staticmethod
+    def apply(f, a):
+        if isinstance(a, Left):
+            return a
+        if isinstance(f, Left):
+            return f
+        g = f.get_value()
+        val = a.get_value()
+        return pure(g(val))
 
     @staticmethod
     def is_left(m):
@@ -115,6 +136,9 @@ do = Either.do
 ret = Either.ret
 bind = Either.bind
 fail = Either.fail
+fmap = Either.fmap
+pure = Either.pure
+apply = Either.apply
 is_left = Either.is_left
 is_right = Either.is_right
 either = Either.either

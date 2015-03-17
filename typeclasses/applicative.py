@@ -1,5 +1,6 @@
 __author__ = 'halpenny'
 from functor import Functor
+from exceptions.exceptions import NotInstanceOfApplicative
 
 
 class Applicative(Functor):
@@ -13,6 +14,7 @@ class Applicative(Functor):
         :param a:
         :return:
         """
+        raise NotInstanceOfApplicative()
         pass
 
     @staticmethod
@@ -21,4 +23,5 @@ class Applicative(Functor):
         Equivalent to Haskell <*>
         :return:
         """
+        raise NotInstanceOfApplicative()
         pass
