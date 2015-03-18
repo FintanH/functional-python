@@ -1,6 +1,5 @@
 __author__ = 'halpenny'
 from typeclasses.monad import Monad
-from typeclasses.functor import Functor
 
 
 class Maybe(Monad):
