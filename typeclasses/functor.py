@@ -1,5 +1,5 @@
 __author__ = 'fintan'
-from exceptions.exceptions import NotInstanceOfFunctor
+from instance_exceptions.method_exceptions import NotInstanceOfFunctor
 
 
 class Functor:

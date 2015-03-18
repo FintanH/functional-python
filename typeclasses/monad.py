@@ -1,9 +1,8 @@
 __author__ = 'halpenny'
-from functor import Functor
-from exceptions.exceptions import NotInstanceOfMonad
+from applicative import Applicative
+from instance_exceptions.method_exceptions import NotInstanceOfMonad
 
-
-class Monad(Functor):
+class Monad(Applicative):
 
     def __init__(self):
         pass
@@ -24,6 +23,7 @@ class Monad(Functor):
         :param a:
         :return:
         """
+        raise NotInstanceOfMonad()
         pass
 
     @staticmethod

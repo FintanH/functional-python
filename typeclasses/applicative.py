@@ -1,6 +1,6 @@
 __author__ = 'halpenny'
 from functor import Functor
-from exceptions.exceptions import NotInstanceOfApplicative
+from instance_exceptions.method_exceptions import NotInstanceOfApplicative
 
 
 class Applicative(Functor):
