@@ -5,9 +5,6 @@ from instance_exceptions.method_exceptions import NotInstanceOfApplicative
 
 class Applicative(Functor):
 
-    def __init__(self):
-        pass
-
     @staticmethod
     def pure(a):
         """a -> f a
