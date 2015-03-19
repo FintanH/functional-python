@@ -38,10 +38,6 @@ class Maybe(Monad):
             return f(a)
 
     @staticmethod
-    def fail(_=None):
-        return Nothing()
-
-    @staticmethod
     def fmap(f, fa):
         if isinstance(fa, Nothing):
             return fa
@@ -175,7 +171,6 @@ class Nothing(Maybe):
 do = Maybe.do
 ret = Maybe.ret
 bind = Maybe.bind
-fail = Maybe.fail
 fmap = Maybe.fmap
 pure = Maybe.pure
 apply = Maybe.apply

@@ -2,6 +2,7 @@ __author__ = 'halpenny'
 from applicative import Applicative
 from instance_exceptions.method_exceptions import NotInstanceOfMonad
 
+
 class Monad(Applicative):
 
     def __init__(self):
@@ -21,14 +22,6 @@ class Monad(Applicative):
         """ (a -> m b) -> m a -> m b
         :param f:
         :param a:
-        :return:
-        """
-        raise NotInstanceOfMonad()
-        pass
-
-    @staticmethod
-    def fail(string):
-        """ String -> m a
         :return:
         """
         raise NotInstanceOfMonad()
