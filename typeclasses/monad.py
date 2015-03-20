@@ -5,9 +5,6 @@ from instance_exceptions.method_exceptions import NotInstanceOfMonad
 
 class Monad(Applicative):
 
-    def __init__(self):
-        pass
-
     @staticmethod
     def ret(a):
         """ a -> m a
