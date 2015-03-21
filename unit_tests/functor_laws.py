@@ -1,19 +1,25 @@
-__author__ = 'fintan'
-
+__author__ = 'halpenny'
 from adt.maybe import fmap, Just, Nothing
 from methods import compose
 from functools import partial
 import unittest
 
-
-class TestLaws(unittest.TestCase):
-    """
+###############
+# Functor Laws
+###############
+"""
     Identity:
     fmap id      = id
 
     Composition:
     fmap (p . q) = (fmap p) . (fmap q)
-    """""
+"""""
+
+
+############
+# Maybe
+############
+class TestMaybe(unittest.TestCase):
 
     def test_id(self):
         self.assertTrue(fmap(self.id_, Just(1)) == Just(1))
@@ -45,3 +51,7 @@ class TestLaws(unittest.TestCase):
         val_right = right(Nothing())
 
         self.assertTrue(val_left == val_right)
+
+
+if __name__ == '__main__':
+    unittest.main()

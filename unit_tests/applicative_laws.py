@@ -3,12 +3,13 @@ from adt.maybe import pure, apply, Just, Nothing
 from methods import compose
 import unittest
 
-
-class TestLaws(unittest.TestCase):
-    """
+###################
+# Applicative Laws
+###################
+"""
     Identity:
     pure id <*> v = v
-                           
+
     Composition:
     pure (.) <*> u <*> v <*> w = u <*> (v <*> w)
 
@@ -19,7 +20,14 @@ class TestLaws(unittest.TestCase):
     u <*> pure y = pure ($ y) <*> u
 
     Interchange is not really needed as Python doesn't have lazy semantics
-    """""
+"""""
+
+
+############
+# Maybe
+############
+class TestMaybe(unittest.TestCase):
+
     def setUp(self):
         self.just_v = Just(1)
         self.nothing = Nothing()
@@ -43,3 +51,7 @@ class TestLaws(unittest.TestCase):
 
     def id_(self, a):
         return a
+
+
+if __name__ == '__main__':
+    unittest.main()
