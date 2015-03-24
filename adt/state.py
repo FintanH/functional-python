@@ -5,16 +5,18 @@ from typeclasses.monad import Monad
 class State(Monad):
 
     def __init__(self, s, a):
-        self.__state = s
-        self.__value = a
+        self.__run_state = lambda state: (a, state)
 
-    def run_state(self, s):
+    @staticmethod
+    def run_state(m, s):
+        return m.__runstate(s)
+
+    @staticmethod
+    def get(state):
         pass
 
-    def get(self):
-        pass
-
-    def put(self, s):
+    @staticmethod
+    def put(state, s):
         pass
 
     @staticmethod
@@ -31,8 +33,13 @@ class State(Monad):
 
     @staticmethod
     def ret(a):
-        pass
+        return lambda s: State(s, a)
 
     @staticmethod
     def bind(f, a):
+        current_state = lambda s: State(s, a)
+        a, new_s = run_state(current_state)
+        return State(f(a), new_s)
         pass
+
+run_state = State.run_state
